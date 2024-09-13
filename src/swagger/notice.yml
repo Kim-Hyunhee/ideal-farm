@@ -1,0 +1,44 @@
+paths:
+  /notices:
+    get:
+      tags:
+        - notice
+      summary: 공지사항 가져오기
+      responses:
+        "200":
+          description: 조회 성공
+
+    post:
+      tags:
+        - notice
+      summary: 공지사항 올리기
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                title:
+                  type: string
+                contents:
+                  type: string
+      responses:
+        "200":
+          description: 등록 성공
+
+  /notices/{id}:
+    get:
+      tags:
+        - notice
+      summary: 공지사항 가져오기
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          description: 공지사항 번호
+          type: integer
+          required: true
+      responses:
+        "200":
+          description: 조회 성공

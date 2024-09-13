@@ -1,0 +1,9 @@
+paths:
+  /club/nft:
+    get:
+      tags:
+        - clubNFT
+      summary: NFT List
+      responses:
+        "200":
+          description: 조회 성공

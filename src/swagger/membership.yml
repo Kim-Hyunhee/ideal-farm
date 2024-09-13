@@ -1,0 +1,47 @@
+paths:
+  /admin/membership:
+    post:
+      tags:
+        - admins
+      summary: 멤버십 초대 등록
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+                sameYear:
+                  type: integer
+                term:
+                  type: integer
+                startDate:
+                  type: string
+                  format: date
+                endDate:
+                  type: string
+                  format: date
+      responses:
+        "200":
+          description: 멤버십 초대 등록 성공
+
+  /admin/membershipGrades:
+    get:
+      tags:
+        - admins
+      summary: membershipGrades
+      responses:
+        "200":
+          description: 멤버십 등급 목록 가져오기
+
+  /club/membership:
+    get:
+      tags:
+        - clubMembership
+      summary: 멤버십 목록
+      responses:
+        "200":
+          description: 멤버십 목록 가져오기

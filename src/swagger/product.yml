@@ -1,0 +1,53 @@
+paths:
+  /products:
+    get:
+      tags:
+        - products
+      summary: 상품 목록 조회
+      responses:
+        "200":
+          description: 상품 목록 조회 성공
+
+  /products/{id}:
+    get:
+      tags:
+        - products
+      summary: 상품 상세보기
+      operationId: getProductsDetail
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          description: 상품 번호
+          type: integer
+          required: true
+      responses:
+        "200":
+          description: 상품 상세 조회 성공
+
+  /products/yet-end:
+    get:
+      tags:
+        - products
+      summary: 예정/마감 상품 목록 조회
+      responses:
+        "200":
+          description: 상품 목록 조회 성공
+# components:
+#   schemas:
+#     product:
+#       type: object
+#       properties:
+#         id:
+#           type: integer
+#           description: 제품 고유 번호
+#         title:
+#           type: string
+#           description: 제품 이름
+#         main_image:
+#           type: string
+#           description: 제품 메인 이미지
+#         discount:
+#           type: integer
+#           description: 할인 내역

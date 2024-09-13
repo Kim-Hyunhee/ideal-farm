@@ -1,0 +1,153 @@
+paths:
+  /users/signUp:
+    post:
+      tags:
+        - users
+      summary: 회원가입
+      requestBody:
+        required: true
+        content:
+          application/json:
+            type: object
+            schema:
+              $ref: "#/components/schemas/user"
+      responses:
+        "200":
+          description: 회원가입 성공
+        "400":
+          description: 회원가입 실패
+
+  /users/logIn:
+    post:
+      tags:
+        - users
+      summary: 로그인
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: 로그인 성공
+        "400":
+          description: 로그인 실패
+
+  /users/walletAddress:
+    patch:
+      tags:
+        - users
+      summary: 지갑 주소 등록
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                walletAddress:
+                  type: string
+                signature:
+                  type: string
+                data:
+                  type: object
+      responses:
+        "200":
+          description: 지갑 주소 등록 성공
+
+  /users/info:
+    get:
+      tags:
+        - users
+      summary: 내 정보 조회
+      responses:
+        "200":
+          description: 조회 성공
+        "400":
+          description: 조회 실패
+
+  /users/password:
+    patch:
+      tags:
+        - users
+      summary: 비밀번호 변경
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                password:
+                  type: string
+      responses:
+        "200":
+          description: 비밀번호 변경 성공
+        "400":
+          description: 비밀번호 변경 실패
+
+  /users/my-info:
+    put:
+      tags:
+        - users
+      summary: 정보 변경
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                birthday:
+                  type: string
+                  format: date
+                phone_number:
+                  type: string
+      responses:
+        "200":
+          description: 비밀번호 변경 성공
+        "400":
+          description: 비밀번호 변경 실패
+
+  /users:
+    delete:
+      tags:
+        - users
+      summary: 회원 탈퇴
+      responses:
+        "200":
+          description: 탈퇴 성공
+
+  /club/user/membership:
+    get:
+      tags:
+        - clubUsers
+      summary: 홈 화면(membership)
+      responses:
+        "200":
+          description: 조회 성공
+
+components:
+  schemas:
+    user:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          description: 이름
+        email:
+          type: "string"
+          description: 이메일
+        password:
+          type: "string"
+          description: 비밀번호
+        phone_number:
+          type: "string"
+          description: 휴대폰 번호
+        birthday:
+          type: "integer"
+          description: 생년월일

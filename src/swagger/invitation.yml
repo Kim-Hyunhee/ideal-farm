@@ -1,0 +1,11 @@
+paths:
+  /club/invitations:
+    get:
+      tags:
+        - clubInvitation
+      summary: 초대장 목록 조회
+      responses:
+        "200":
+          description: 조회 성공
+        "400":
+          description: 조회 실패

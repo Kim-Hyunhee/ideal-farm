@@ -1,0 +1,111 @@
+paths:
+  /admin/meeting:
+    post:
+      tags:
+        - clubMeeting
+      summary: 모임 등록
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                title:
+                  type: string
+                image:
+                  type: string
+                additionalInfo:
+                  type: string
+                location:
+                  type: string
+                detailLocation:
+                  type: string
+                selfPayment:
+                  type: string
+                inquiry:
+                  type: string
+                startDate:
+                  type: string
+                  format: date-time
+                endDate:
+                  type: string
+                  format: date-time
+                latitude:
+                  type: number
+                longitude:
+                  type: number
+                description:
+                  type: string
+      responses:
+        "200":
+          description: 모임 등록 성공
+
+  /club/meeting:
+    get:
+      tags:
+        - clubMeeting
+      summary: 모임 목록
+      parameters:
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum: [upcoming, past, yet]
+        - in: query
+          name: attend
+          type: string
+      responses:
+        "200":
+          description: 조회 성공
+        "400":
+          description: 조회 실패
+
+  /club/meeting/{id}:
+    get:
+      tags:
+        - clubMeeting
+      summary: 모임 상세보기
+      parameters:
+        - in: path
+          name: id
+          type: integer
+          required: true
+      responses:
+        "200":
+          description: 조회 성공
+        "400":
+          description: 조회 실패
+
+  /club/meeting/{id}/attendance:
+    post:
+      tags:
+        - clubMeeting
+      summary: 모임 참석하기
+      parameters:
+        - in: path
+          name: id
+          type: integer
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                isAttend:
+                  type: integer
+      responses:
+        "200":
+          description: 참석 하기 버튼 클릭
+
+    delete:
+      tags:
+        - clubMeeting
+      summary: 미응답으로 전환
+      parameters:
+        - in: path
+          name: id
+          type: integer
+          required: true
+      responses:
+        "200":
+          description: 참석 하기 버튼 다시 클릭(미응답)

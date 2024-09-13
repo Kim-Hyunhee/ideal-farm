@@ -1,0 +1,21 @@
+paths:
+  /club/communities:
+    post:
+      tags:
+        - clubCommunity
+      summary: 커뮤니티에 글 등록
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                images:
+                  type: array
+                  items:
+                    type: string
+                content:
+                  type: string
+      responses:
+        "200":
+          description: 등록 성공

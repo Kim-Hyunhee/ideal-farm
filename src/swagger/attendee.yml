@@ -1,0 +1,14 @@
+paths:
+  /admin/attendee/{id}:
+    patch:
+      tags:
+        - admins
+      summary: 모임 참가 확정
+      parameters:
+        - in: path
+          name: id
+          type: integer
+          required: true
+      responses:
+        "200":
+          description: 참가 확인
